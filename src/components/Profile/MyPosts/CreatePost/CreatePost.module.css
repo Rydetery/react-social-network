@@ -1,0 +1,12 @@
+.create {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: baseline;
+}
+.btn {
+  padding: 5px 8px;
+  background-color: rgb(34, 109, 196);
+  color: rgb(66, 66, 66);
+  border: none;
+}

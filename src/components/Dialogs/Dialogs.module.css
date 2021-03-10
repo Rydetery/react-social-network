@@ -1,0 +1,43 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 3fr 7fr;
+}
+
+.contacts{
+    background-color: rgb(219, 219, 235);
+    display: inline-block;
+    border-left: 1px solid rgb(163, 163, 163);
+    border-right: 1px solid  rgb(163, 163, 163);
+}
+
+.dialog a {
+    font-size: 16pt;
+    color: rgb(36, 36, 36);
+    text-decoration: none;
+}
+.dialog a:hover{
+    color: rgb(111, 127, 199);
+}
+
+a.active{
+    color: rgb(111, 127, 199);
+}
+
+.message {
+    display: inline-block;
+    margin: 5px;
+    padding: 15px;
+    background-color: rgb(66, 66, 66);
+    color: rgb(233, 233, 233);
+    border-radius: 10px;
+}
+.container {
+    width: 100%;
+}
+.btn {
+    padding: 5px 8px;
+    background-color: rgb(34, 109, 196);
+    color: rgb(66, 66, 66);
+    border: none;
+  }
+  

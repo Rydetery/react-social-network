@@ -1,0 +1,14 @@
+.app-wrapper {
+  display: grid;
+  margin: 0 auto;
+  max-width: 1820px;
+  grid-template-areas: 
+  'header header'
+  'navigation main';
+  grid-template-rows: 60px 1fr;
+  grid-template-columns: 2fr 10fr;
+}
+.app-wrapper-content {
+  grid-area: main;
+  background-color: rgb(238, 238, 238);
+}

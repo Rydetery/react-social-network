@@ -1,0 +1,28 @@
+.item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.child + .child{
+    margin-left: 15px;
+}
+.item > img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+.like{
+    text-align: end;
+}
+.like > img {
+    padding: 2px;
+    max-width: 30px;
+    max-height: 30px;
+    border-radius: 50%;
+}
+.post{
+    margin-bottom: 10px;
+    padding: 5px;
+    background-color: rgb(192, 192, 192);
+    max-width: 50%;
+}
