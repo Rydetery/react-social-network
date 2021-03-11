@@ -2,14 +2,14 @@ import React from 'react';
 import classes from './CreatePost.module.css';
 const CreatePost = (props) => {
   let newPostElement = React.createRef();
-  
-  let addPost = props.addPost;
+
   const pressButton = () => {
-    addPost();
+    props.dispatch({type: 'ADD-POST'});
   }
+
   const changeTextValue = () => {
     let text = newPostElement.current.value;
-    props.updateText(text)
+    props.dispatch({type: 'UPDATE-TEXT', newText: text})
   }
 
   return (

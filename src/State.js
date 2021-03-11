@@ -21,44 +21,44 @@ let store = {
               {id: 2, message: 'General Kenobi?!'}
         ]
     },
+    _callSubscriber () {
+        console.log('State was changed');
+    },
     getState () {
         return this._state
     },
-    callSubscriber () {
-        console.log('State was changed');
-    },
-    addDialogsData (name) {
-        let user = {
-            id: this._state.dialogsData[this._state.dialogsData.length],
-            name: name
-        }
-        this._state.dialogsData.push(user);
-        this.callSubscriber(this._state);
-    },
-    addPost () {
-        let post = {
-            id: this._state.profilePage.posts[this._state.profilePage.posts.length],
-            message: this._state.profilePage.newPostText,
-            likes: 0
-        }
-        this._state.profilePage.posts.push(post);
-        this._state.profilePage.newPostText = '';
-        this.callSubscriber(this._state);
-    },
-    updateText (text) {
-        this._state.profilePage.newPostText = text;
-        this.callSubscriber(this._state);
-    },
-    addMessage (message) {
-        let newMessage = {
-            id: this._state.messagesData[this._state.messagesData.length],
-            message: message
-        }
-        this._state.messagesData.push(newMessage)
-        this.callSubscriber(this._state)
-    },
     subscribe (observer) {
-        this.callSubscriber = observer;
+        this._callSubscriber = observer;
+    },
+
+    dispatch (action) {
+        if (action.type === 'ADD-POST') {
+            let post = {
+                id: this._state.profilePage.posts[this._state.profilePage.posts.length],
+                message: this._state.profilePage.newPostText,
+                likes: 0
+            }
+            this._state.profilePage.posts.push(post);
+            this._state.profilePage.newPostText = '';
+            this._callSubscriber(this._state);
+        } else if (action.type === 'UPDATE-TEXT') {
+            this._state.profilePage.newPostText = action.newText;
+            this._callSubscriber(this._state);
+        } else if (action.type === 'ADD-MESSAGE') {
+            let newMessage = {
+                id: this._state.messagesData[this._state.messagesData.length],
+                message: action.message
+            }
+            this._state.messagesData.push(newMessage)
+            this._callSubscriber(this._state)
+        } else if (action.type === 'ADD-USER') {
+            let user = {
+                id: this._state.dialogsData[this._state.dialogsData.length],
+                name: action.username
+            }
+            this._state.dialogsData.push(user);
+            this._callSubscriber(this._state);
+        }
     }
 }
 

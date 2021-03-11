@@ -10,8 +10,8 @@ const Dialogs = (props) => {
 
     let newMessageElement = React.createRef();
 
-    const pressButton = () => {
-        props.addMessage(newMessageElement.current.value);
+    const sendMessage = () => {
+        props.dispatch({type: 'ADD-MESSAGE', message: newMessageElement.current.value });
         newMessageElement.current.value = '';
     }
 
@@ -23,7 +23,7 @@ const Dialogs = (props) => {
             <section className={classes.chat}>
                 {messagesComponents}
                 <textarea ref={newMessageElement}></textarea>
-                <button onClick={pressButton} className={classes.btn}>Confirm</button>
+                <button onClick={sendMessage} className={classes.btn}>Confirm</button>
             </section>
         </main>
     )

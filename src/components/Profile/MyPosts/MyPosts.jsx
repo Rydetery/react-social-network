@@ -5,7 +5,7 @@ const MyPosts = (props) => {
   return (
     <section className={classes.MyPosts}>
       <h6>My post</h6>
-      <CreatePost addPost={props.addPost} newPostText={props.profilePage.newPostText} updateText={props.updateText}/>
+      <CreatePost dispatch={props.dispatch} newPostText={props.profilePage.newPostText} />
       <Posts postData={props.profilePage.posts}/>
     </section>
   );
