@@ -1,3 +1,8 @@
+const ADD_POST = 'ADD-POST';
+const UPDATE_TEXT = 'UPDATE-TEXT';
+const ADD_MESSAGE = 'ADD-MESSAGE';
+const ADD_USER = 'ADD-USER';
+
 let store = {
     _state: {
         dialogsData : [
@@ -32,7 +37,7 @@ let store = {
     },
 
     dispatch (action) {
-        if (action.type === 'ADD-POST') {
+        if (action.type === ADD_POST) {
             let post = {
                 id: this._state.profilePage.posts[this._state.profilePage.posts.length],
                 message: this._state.profilePage.newPostText,
@@ -41,17 +46,17 @@ let store = {
             this._state.profilePage.posts.push(post);
             this._state.profilePage.newPostText = '';
             this._callSubscriber(this._state);
-        } else if (action.type === 'UPDATE-TEXT') {
+        } else if (action.type === UPDATE_TEXT) {
             this._state.profilePage.newPostText = action.newText;
             this._callSubscriber(this._state);
-        } else if (action.type === 'ADD-MESSAGE') {
+        } else if (action.type === ADD_MESSAGE) {
             let newMessage = {
                 id: this._state.messagesData[this._state.messagesData.length],
                 message: action.message
             }
             this._state.messagesData.push(newMessage)
             this._callSubscriber(this._state)
-        } else if (action.type === 'ADD-USER') {
+        } else if (action.type === ADD_USER) {
             let user = {
                 id: this._state.dialogsData[this._state.dialogsData.length],
                 name: action.username
@@ -62,6 +67,21 @@ let store = {
     }
 }
 
+export const addPostActionCreator = () => ({
+    type: 'ADD-POST'
+})
+export const updateNewTextValueActionCreator = (text) => ({
+    type: 'UPDATE-TEXT',
+    newText: text
+})
+export const addMessageActionCreator = (text) => ({
+    type: 'ADD-MESSAGE',
+    message: text
+})
+export const addUserActionCreator = (name) => ({
+    type: 'ADD-USER',
+    username: name
+})
 window.store = store;
 
 export default store;

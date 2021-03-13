@@ -1,15 +1,17 @@
 import React from 'react';
+import { addPostActionCreator, updateNewTextValueActionCreator } from '../../../../State';
 import classes from './CreatePost.module.css';
 const CreatePost = (props) => {
   let newPostElement = React.createRef();
 
   const pressButton = () => {
-    props.dispatch({type: 'ADD-POST'});
+    props.dispatch(addPostActionCreator());
   }
 
   const changeTextValue = () => {
     let text = newPostElement.current.value;
-    props.dispatch({type: 'UPDATE-TEXT', newText: text})
+    let action = updateNewTextValueActionCreator(text);
+    props.dispatch(action)
   }
 
   return (

@@ -2,6 +2,7 @@ import React from 'react';
 import classes from './Dialogs.module.css';
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
+import { addMessageActionCreator } from '../../State';
 
 
 const Dialogs = (props) => {
@@ -11,7 +12,8 @@ const Dialogs = (props) => {
     let newMessageElement = React.createRef();
 
     const sendMessage = () => {
-        props.dispatch({ type: 'ADD-MESSAGE', message: newMessageElement.current.value });
+        let action = addMessageActionCreator(newMessageElement.current.value)
+        props.dispatch(action);
         newMessageElement.current.value = '';
     }
 
