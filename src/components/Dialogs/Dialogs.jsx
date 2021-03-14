@@ -2,19 +2,22 @@ import React from 'react';
 import classes from './Dialogs.module.css';
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
-import { addMessageActionCreator } from '../../State';
+import { addMessageActionCreator, updateMessageTextActionCreator } from '../../State';
 
 
 const Dialogs = (props) => {
-    let dialogsComponents = props.dialogsData.map((contact) => (<DialogItem id={contact.id} name={contact.name} />));
-    let messagesComponents = props.messagesData.map((item) => (<Message id={item.id} message={item.message} />));
+    let dialogsComponents = props.dialogsPage.usersData.map((contact) => (<DialogItem id={contact.id} name={contact.name} />));
+    let messagesComponents = props.dialogsPage.messagesData.map((item) => (<Message id={item.id} message={item.message} />));
 
     let newMessageElement = React.createRef();
 
     const sendMessage = () => {
-        let action = addMessageActionCreator(newMessageElement.current.value)
+        props.dispatch(addMessageActionCreator());
+    }
+    const changeTextValue = () => {
+        let text = newMessageElement.current.value;
+        let action = updateMessageTextActionCreator(text);
         props.dispatch(action);
-        newMessageElement.current.value = '';
     }
 
     return (
@@ -24,7 +27,8 @@ const Dialogs = (props) => {
             </section>
             <section className={classes.chat}>
                 {messagesComponents}
-                <textarea ref={newMessageElement}></textarea>
+                <textarea 
+                ref={newMessageElement} value={props.dialogsPage.newMessageText} onChange={changeTextValue} placeholder='Write you message...' ></textarea>
                 <button onClick={sendMessage} className={classes.btn}>Confirm</button>
             </section>
         </main>
