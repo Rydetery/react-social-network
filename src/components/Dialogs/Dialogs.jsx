@@ -28,7 +28,7 @@ const Dialogs = (props) => {
             <section className={classes.chat}>
                 {messagesComponents}
                 <textarea 
-                ref={newMessageElement} value={props.dialogsPage.newMessageText} onChange={changeTextValue} placeholder='Write you message...' ></textarea>
+                ref={newMessageElement} value={props.dialogsPage.newMessageText} onChange={changeTextValue} placeholder='Enter you message...' ></textarea>
                 <button onClick={sendMessage} className={classes.btn}>Confirm</button>
             </section>
         </main>

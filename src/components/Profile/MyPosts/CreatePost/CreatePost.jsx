@@ -16,8 +16,8 @@ const CreatePost = (props) => {
 
   return (
       <div className={classes.create}>
-        <textarea ref={newPostElement} value={props.newPostText} onChange={changeTextValue} placeholder='Write you post...'></textarea>
-        <button onClick={pressButton} className={classes.btn}>Confirm</button>
+        <textarea ref={newPostElement} value={props.newPostText} onChange={changeTextValue} placeholder='Enter you post...'></textarea>
+        <button onClick={pressButton} className={classes.btn}>Create post</button>
       </div>
   );
 }
