@@ -34,10 +34,22 @@ a.active{
 .container {
     width: 100%;
 }
+.chat > div {
+    display: flex;
+    justify-content: baseline;
+}
 .btn {
+    font-family: Tahoma;
+    font-size: 14px;
+    width: 15%;
+    height: 90px;
     padding: 5px 8px;
     background-color: rgb(34, 109, 196);
-    color: rgb(66, 66, 66);
+    color: rgb(238, 238, 238);
     border: none;
   }
   
+  .btn:hover {
+    background-color: rgb(5, 81, 168);
+    color: rgb(221, 221, 221);
+  }

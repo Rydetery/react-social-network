@@ -2,7 +2,6 @@ import React from 'react';
 import classes from './Dialogs.module.css';
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
-import { addMessageActionCreator, updateMessageTextActionCreator } from '../../redux/dialogsReducer';
 
 
 const Dialogs = (props) => {
@@ -12,12 +11,11 @@ const Dialogs = (props) => {
     let newMessageElement = React.createRef();
 
     const sendMessage = () => {
-        props.dispatch(addMessageActionCreator());
+        props.sendNewMessage();
     }
     const changeTextValue = () => {
         let text = newMessageElement.current.value;
-        let action = updateMessageTextActionCreator(text);
-        props.dispatch(action);
+        props.updateTextMessage(text);
     }
 
     return (
@@ -27,9 +25,11 @@ const Dialogs = (props) => {
             </section>
             <section className={classes.chat}>
                 {messagesComponents}
-                <textarea 
-                ref={newMessageElement} value={props.dialogsPage.newMessageText} onChange={changeTextValue} placeholder='Enter you message...' ></textarea>
-                <button onClick={sendMessage} className={classes.btn}>Confirm</button>
+                <div>
+                    <textarea 
+                    ref={newMessageElement} value={props.dialogsPage.newMessageText} onChange={changeTextValue} placeholder='Enter you message...' ></textarea>
+                    <button onClick={sendMessage} className={classes.btn}>Send message</button>
+                </div>
             </section>
         </main>
     )

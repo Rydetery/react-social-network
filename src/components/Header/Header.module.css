@@ -4,5 +4,7 @@
     background-color: rgb(69, 84, 107);
   }
   .header img {
-    width: 80px;
+    margin: 0.5em 0.5em 0.5em 1.5em;
+    width: 3em;
+    height: 3em;
   }
