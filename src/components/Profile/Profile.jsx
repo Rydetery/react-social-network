@@ -4,10 +4,10 @@ import classes from './Profile.module.css';
 import Wallpaper from './Wallpaper/Wallpaper';
 const Profile = (props) => {
     return(
-        <section>
+      <section>
         <Wallpaper />
         <ProfileInfo />
-        <MyPosts profilePage={props.profilePage} dispatch={props.dispatch} />
+        <MyPosts />
       </section>
     );
 }
