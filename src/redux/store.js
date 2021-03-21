@@ -3,7 +3,7 @@ import profileReducer from './profileReducer';
 import sidebarReducer from './sidebarReducer';
 
 let store = {
-    _state: {
+    #state: {
         dialogsPage: {
         usersData : [
             {id: 1, name: 'Dmitry'},
@@ -40,11 +40,11 @@ let store = {
     },
 
     dispatch (action) {
-        store._state.profilePage = profileReducer(store._state.profilePage, action);
-        store._state.dialogsPage = dialogsReducer(store._state.dialogsPage, action);
-        store._state.sidebar = sidebarReducer(store._state.sidebar, action);
+        store._state.profilePage = profileReducer(store.#state.profilePage, action);
+        store._state.dialogsPage = dialogsReducer(store.#state.dialogsPage, action);
+        store._state.sidebar = sidebarReducer(store.#state.sidebar, action);
 
-        this._callSubscriber(this._state);
+        this._callSubscriber(this.#state);
     }
 }
 
